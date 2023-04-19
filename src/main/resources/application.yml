@@ -3,16 +3,33 @@ spring:
     cassandra:
       contact-points: localhost
       port: 9042
-      keyspace-name: simple_crud
-      #username: cassandra
-      #password: cassandra
-      #schema-act: create_if_not_exists
+      keyspace-name: demo_training
+      schema-action: CREATE_IF_NOT_EXISTS
+      local-datacenter: datacenter1
+  webflux:
+    base-path: /api
+
+  #r2dbc:
+    #url: r2dbc:postgresql://localhost:5432/test
+    #username: postgres
+    #password: postgres
+#logging:
+  #level:
+    #org.springframework.data.r2dbc: Debug
 
 springdoc:
   version: 1.0.0
   swagger-ui:
     path: /swagger-ui-custom.html
 
-#logging:
-#  level:
-#    root: DEBUG
+
+management:
+  endpoint:
+    health:
+      show-details: always
+
+
+server:
+  port: 9000
+  http2:
+    enabled: true
